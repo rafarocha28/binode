@@ -18,5 +18,32 @@ function main() {
 
   noPrincipal.esquerda.esquerda.esquerda = new No(0);
 
-  const converte = (noPrincipal) => {};
+  let noPrincipalLista = null;
+  let noAnterior = null;
+
+  const converte = (no) => {
+    if (!no) {
+      return;
+    }
+    // começa pelo lado esquerdo da árvore
+    converte(no.esquerda);
+
+    // o mais a esquerda será o primeiro da lista
+    if (!noAnterior) {
+      noPrincipalLista = no;
+    }
+    // esquerda será o nó anterior
+    // direita será o nó atual
+    // ligação dupla
+    else {
+      no.esquerda = noAnterior;
+      noAnterior.direita = no;
+    }
+    // anterior agora passa a ser o atual
+    noAnterior = no;
+    // vai para o lado direito
+    converte(no.direita);
+  };
+
+  converte(noPrincipal);  
 }
