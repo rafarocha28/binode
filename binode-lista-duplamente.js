@@ -21,12 +21,12 @@ function main() {
   let noPrincipalLista = null;
   let noAnterior = null;
 
-  const converte = (no) => {
+  const convert = (no) => {
     if (!no) {
       return;
     }
     // começa pelo lado esquerdo da árvore
-    converte(no.esquerda);
+    convert(no.esquerda);
 
     // o mais a esquerda será o primeiro da lista
     if (!noAnterior) {
@@ -42,8 +42,8 @@ function main() {
     // anterior agora passa a ser o atual
     noAnterior = no;
     // vai para o lado direito
-    converte(no.direita);
+    convert(no.direita);
   };
 
-  converte(noPrincipal);  
+  convert(noPrincipal);  
 }
